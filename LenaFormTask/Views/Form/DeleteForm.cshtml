@@ -1,0 +1,55 @@
+﻿@model EntityLayer.Classes.Form
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">@Model.Name adlı formu silmek istediğinize emin misiniz?</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="background">
+					<div class="shape"></div>
+					<div class="shape"></div>
+				</div>
+				<form asp-action="DeleteForm" enctype="multipart/form-data" method="POST">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<label asp-for="Name" for="recipient-name" class="col-form-label">Adı</label>
+						<input asp-for="Name" type="text" class="form-control" id="recipient-name" disabled>
+						<span asp-validation-for="Name" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Description" for="message-text" class="col-form-label">Açıklama:</label>
+						<textarea asp-for="Description" class="form-control" id="message-text" disabled></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+						<button type="submit" class="btn btn-primary">Sil</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form asp-action="DeleteForm" enctype="multipart/form-data" method="POST">
+	<div class="card border-success mb-3 form-group" style="max-width: 21rem;">
+		<div class="card-header bg-transparent border-success">@Model.Name</div>
+		<div class="card-body text-success">
+			<p class="card-text">@Model.Description</p>
+		</div>
+		<div class="card-footer bg-transparent border-success">
+			<p class="card-text">Oluşturulma Tarihi: @((Model.CreatedAt).ToString("MM/dd/yyyy"))</p>
+		</div>
+		<hr />
+		<div class="d-flex justify-content-around form-group">
+			<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+				Sil
+			</button>
+			<a asp-action="Main" class="btn btn-outline-info">Vazgeç</a>
+		</div>
+	</div>
+</form>
