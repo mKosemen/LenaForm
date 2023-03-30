@@ -12,3 +12,5 @@ Geliştirilebilirlilik:
   - Kullanıcı profili oluturulabilinir.
 Eksikler:
   - Yetkisiz girişlerde login sayfasına yönlendirme mevcut değil.
+
+Not: Lokalde kullanılan database'e ait .bak dosyası eklenmiştir.
